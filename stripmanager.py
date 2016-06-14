@@ -16,7 +16,7 @@ strip.begin()
 
 def fill_strip_percentage(perc):
     limit = int(60*perc)
-    for i in range(limit):
+    for i in range(60):
         strip.setPixelColor(i, 0)
     for i in range(limit):
         delta = float(255)*(float(i)/60.0)
