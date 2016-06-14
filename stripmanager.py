@@ -18,6 +18,7 @@ def fill_strip_percentage(perc):
     limit = int(60*perc)
     for i in range(60):
         strip.setPixelColor(i, 0)
+    strip.show()
     for i in range(limit):
         delta = float(255)*(float(i)/60.0)
         strip.setPixelColorRGB(i, int(delta), int(255-delta), 0)
