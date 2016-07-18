@@ -23,8 +23,12 @@ class JIRAWrapper(object):
     def current_sprint_progress(self, force_refresh=False):
         total_sprint_value = 0
         total_sprint_progress = 0
-        for user_story in self.current_sprint_user_stories(force_refresh):
-            total_sprint_value += user_story.fields.aggregateprogress.total
-            total_sprint_progress += user_story.fields.aggregateprogress.progress
-        percent_progress = (total_sprint_progress/total_sprint_value) * 100
+        percent_progress = 0
+        try:
+            for user_story in self.current_sprint_user_stories(force_refresh):
+                total_sprint_value += user_story.fields.aggregateprogress.total
+                total_sprint_progress += user_story.fields.aggregateprogress.progress
+            percent_progress = (total_sprint_progress/total_sprint_value) * 100
+        except Exception:
+            print('Issue occurred while accessing info related to the active sprint!')
         return round(percent_progress, 2)
