@@ -1,11 +1,12 @@
 from jira.client import JIRA
 from datetime import datetime
+import requests
 
 
 class JIRAWrapper(object):
 
-    def __init__(self, user, password, project):
-        options = {'server': 'http://rndwww.nce.amadeus.net/agile'}
+    def __init__(self, url, user, password, project):
+        options = {'server': url}
         self._jira = JIRA(options, basic_auth=(user, password))
         self._project = project
         self._last_update = datetime.fromtimestamp(0)
