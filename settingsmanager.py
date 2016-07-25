@@ -1,6 +1,9 @@
 import configparser
+import os
+
+base_dir = os.path.dirname(os.path.realpath(__file__))
 config = configparser.ConfigParser()
-config.read('jira_tracker.ini')
+config.read(base_dir + '/jira_tracker.ini')
 
 
 def get_jira_credentials():
